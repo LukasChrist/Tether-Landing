@@ -159,6 +159,19 @@ a { text-decoration: none; color: inherit; }
   animation: fade-up .7s var(--ease) forwards 0.8s;
 }
 
+.hero-sub {
+  font-family: var(--sans);
+  font-size: clamp(.9rem, 2vw, 1.1rem);
+  font-weight: 300;
+  color: var(--text-light);
+  opacity: .75;
+  max-width: 42ch;
+  margin: 0 auto 2.75rem;
+  line-height: 1.7;
+  animation: fade-up .7s var(--ease) forwards 1s;
+  opacity: 0;
+}
+
 /* Pill row */
 .feature-pills {
   display: flex;

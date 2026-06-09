@@ -167,6 +167,9 @@ a { text-decoration: none; color: inherit; }
   border-radius: 50%;
   filter: blur(90px);
   pointer-events: none;
+  /* promote to own compositing layer so blur doesn't re-paint on move */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .hero-orb-a {
@@ -1463,6 +1466,45 @@ footer {
 /* ════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════ */
+
+/* ════════════════════════════════════════
+   MOBILE PERFORMANCE — kill expensive GPU
+   ops that cause jank on phones
+════════════════════════════════════════ */
+@media (max-width: 820px) {
+
+  /* Replace animated blur orbs with a static gradient — blur filter on
+     animated/composited layers is the #1 mobile jank source             */
+  .hero-orb { display: none; }
+
+  .hero::before {
+    animation: none;
+    background:
+      radial-gradient(ellipse 100% 60% at 25% 15%, rgba(192, 92, 48, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 80% 75%, rgba(120, 40, 20, 0.12) 0%, transparent 55%);
+  }
+
+  .hero::after { animation: none; }
+
+  /* Static dark section glows — no animation */
+  .dark-section::before,
+  .dark-section::after { animation: none; }
+
+  /* Disable phone hover lift (touch has no hover) */
+  .phone-wrap:hover {
+    transform: none;
+    filter: none;
+  }
+
+  /* Disable reveal transition on very small screens — just show elements */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+}
+
 /* ════════════════════════════════════════
    TABLET  (≤820px)
 ════════════════════════════════════════ */

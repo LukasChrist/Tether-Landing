@@ -110,6 +110,23 @@ Dots.forEach((Dot) => {
 
 
 /* ════════════════════════════════════════
+   Showcase margin deco fade-in
+════════════════════════════════════════ */
+const DecoObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      entry.target.querySelectorAll('.showcase-deco').forEach((Deco) => {
+        Deco.classList.toggle('visible', entry.isIntersecting);
+      });
+    });
+  },
+  { threshold: 0.3 }
+);
+
+document.querySelectorAll('.showcase').forEach((s) => DecoObserver.observe(s));
+
+
+/* ════════════════════════════════════════
    Scroll-reveal
 ════════════════════════════════════════ */
 const revealObserver = new IntersectionObserver(

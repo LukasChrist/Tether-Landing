@@ -537,7 +537,100 @@ a { text-decoration: none; color: inherit; }
 /* ════════════════════════════════════════
    SHOWCASE SECTIONS
 ════════════════════════════════════════ */
-.showcase { padding: 8rem 0; }
+.showcase { padding: 8rem 0; position: relative; }
+
+/* ── Margin deco elements — desktop only ── */
+.showcase-deco {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity .6s var(--ease);
+  pointer-events: none;
+}
+
+/* Fade in when section is revealed */
+.showcase-deco.visible { opacity: 1; }
+
+.showcase-deco--left  { left: 2.5rem; }
+.showcase-deco--right { right: 2.5rem; }
+
+/* Section counter tag */
+.deco-tag {
+  font-family: var(--sans);
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .6;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Vertical line */
+.deco-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  opacity: .25;
+}
+
+/* Stat callout */
+.deco-stat {
+  font-family: var(--sans);
+  font-size: .65rem;
+  color: var(--text-muted);
+  opacity: .5;
+  text-align: center;
+  line-height: 1.5;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.deco-stat strong {
+  display: block;
+  font-size: .8rem;
+  color: var(--accent);
+  opacity: .8;
+  writing-mode: vertical-rl;
+}
+
+/* Horizontal rule on right side */
+.deco-rule {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, currentColor, transparent);
+  opacity: .2;
+}
+
+/* Short note text */
+.deco-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: .72rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  opacity: .45;
+  text-align: center;
+  line-height: 1.8;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Dark section variants */
+.deco-dark .deco-tag  { color: var(--accent); }
+.deco-dark .deco-stat { color: var(--text-dim); }
+.deco-dark .deco-note { color: var(--text-dim); }
+
+/* Hide on anything narrower than where margins actually exist */
+@media (max-width: 1280px) {
+  .showcase-deco { display: none; }
+}
 
 .dark-section {
   background: var(--dark);

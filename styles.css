@@ -744,7 +744,12 @@ a { text-decoration: none; color: inherit; }
   padding: 3px 8px;
   font-size: 7px;
   color: var(--text-dark);
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
 }
+
+.vg-pill:hover  { background: rgba(0,0,0,.06); }
+.vg-pill:active { transform: scale(0.93); background: rgba(0,0,0,.1); }
 
 
 /* ── Memory grid ── */
@@ -874,7 +879,12 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
 }
+
+.vault-row:hover  { background: #2C2426; }
+.vault-row:active { transform: scale(0.97); background: #322628; }
 
 .v-emoji { font-size: 17px; flex-shrink: 0; }
 
@@ -939,7 +949,12 @@ a { text-decoration: none; color: inherit; }
 .tab {
   display: flex; flex-direction: column; align-items: center; gap: 3px;
   font-size: 8.5px; color: var(--text-muted);
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease;
 }
+
+.tab:hover  { opacity: .75; }
+.tab:active { transform: scale(0.88); }
 
 .dark-tab .tab { color: var(--text-dim); }
 
@@ -1002,7 +1017,13 @@ a { text-decoration: none; color: inherit; }
   width: 34px; height: 34px;
   border-radius: 50%;
   background: var(--accent);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 2px 8px rgba(192, 92, 48, .4);
 }
+
+.shutter-btn:hover  { box-shadow: 0 4px 14px rgba(192, 92, 48, .55); transform: scale(1.06); }
+.shutter-btn:active { transform: scale(0.9); box-shadow: 0 1px 4px rgba(192, 92, 48, .3); }
 
 
 /* ── Share screen ── */
@@ -1074,7 +1095,12 @@ a { text-decoration: none; color: inherit; }
   font-size: 7.5px; font-weight: 600;
   color: var(--text-muted);
   display: flex; flex-direction: column; align-items: center; gap: 1px;
+  cursor: pointer;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
 }
+
+.role-opt:hover  { border-color: rgba(192, 92, 48, .3); background: rgba(192, 92, 48, .04); }
+.role-opt:active { transform: scale(0.95); }
 
 .role-opt span { font-size: 6.5px; font-weight: 400; }
 
@@ -1092,7 +1118,14 @@ a { text-decoration: none; color: inherit; }
   text-align: center;
   font-size: 8.5px; font-weight: 600;
   margin-bottom: 8px;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.send-invite:hover  { filter: brightness(1.1); }
+.send-invite:active { transform: scale(0.96); filter: brightness(0.95); }
 
 .collab-list { display: flex; flex-direction: column; gap: 6px; }
 
@@ -1369,6 +1402,10 @@ footer {
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+@keyframes ripple-out {
+  to { transform: scale(1); opacity: 0; }
 }
 
 

@@ -8,30 +8,35 @@ window.addEventListener('scroll', () => {
   Nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// Flip to light-bg when a light section is majority in view
-const LightSections = document.querySelectorAll('.light-section');
-let LightSectionsVisible = 0;
+// Flip nav text dark/light based on what section is *directly behind* the navbar.
+// We poll on every scroll tick using getBoundingClientRect so the check is pixel-perfect.
+const AllSections   = document.querySelectorAll('.light-section, .dark-section, .hero, footer');
+const NavHeight     = () => Nav.getBoundingClientRect().height;
 
-const navLightObserver = new IntersectionObserver(
-  (entries) => {
+function UpdateNavColor() {
 
-    entries.forEach((entry) => {
+  // Sample the midpoint of the navbar strip
+  const SampleY = NavHeight() / 2;
 
-      if (entry.isIntersecting) {
-        LightSectionsVisible++;
-      } else {
-        LightSectionsVisible = Math.max(0, LightSectionsVisible - 1);
-      }
+  // Walk every tracked section and find whichever one the sample point sits inside
+  let IsLight = false;
 
-    });
+  AllSections.forEach((Section) => {
 
-    Nav.classList.toggle('light-bg', LightSectionsVisible > 0);
+    const Rect = Section.getBoundingClientRect();
 
-  },
-  { threshold: 0.15, rootMargin: `-${Nav.offsetHeight}px 0px 0px 0px` }
-);
+    if (SampleY >= Rect.top && SampleY <= Rect.bottom) {
+      IsLight = Section.classList.contains('light-section');
+    }
 
-LightSections.forEach((section) => navLightObserver.observe(section));
+  });
+
+  Nav.classList.toggle('light-bg', IsLight);
+
+}
+
+window.addEventListener('scroll', UpdateNavColor, { passive: true });
+UpdateNavColor(); // run once on load
 
 
 /* ════════════════════════════════════════
@@ -168,6 +173,44 @@ document.querySelectorAll('.pillar-card').forEach((Card) => {
   });
 
 });
+
+
+/* ════════════════════════════════════════
+   Ripple effect on phone UI buttons
+════════════════════════════════════════ */
+function AddRipple(Selector, LightRipple = false) {
+
+  document.querySelectorAll(Selector).forEach((El) => {
+
+    El.addEventListener('click', (e) => {
+
+      const Rect   = El.getBoundingClientRect();
+      const Size   = Math.max(Rect.width, Rect.height) * 1.6;
+      const X      = e.clientX - Rect.left - Size / 2;
+      const Y      = e.clientY - Rect.top  - Size / 2;
+
+      const Ripple = document.createElement('span');
+      Ripple.style.cssText = `
+        position:absolute; border-radius:50%; pointer-events:none;
+        width:${Size}px; height:${Size}px; left:${X}px; top:${Y}px;
+        background:${LightRipple ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.1)'};
+        transform:scale(0); opacity:1;
+        animation: ripple-out .45s ease forwards;
+      `;
+
+      El.appendChild(Ripple);
+      setTimeout(() => Ripple.remove(), 500);
+
+    });
+
+  });
+
+}
+
+AddRipple('.shutter-btn',  true);
+AddRipple('.send-invite',  true);
+AddRipple('.vault-row',    false);
+AddRipple('.tab',          false);
 
 
 /* ════════════════════════════════════════

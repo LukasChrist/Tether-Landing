@@ -15,6 +15,19 @@
 <!-- ══════════════════════════════════════
      NAV
 ══════════════════════════════════════ -->
+<!-- Scroll progress bar -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- Side section dots -->
+<nav class="section-dots" aria-label="Page sections">
+  <a class="section-dot" data-section="hero"     href="#hero"     data-label="Top"></a>
+  <a class="section-dot" data-section="vault"    href="#vault"    data-label="The Vault"></a>
+  <a class="section-dot" data-section="memories" href="#memories" data-label="Memories"></a>
+  <a class="section-dot" data-section="scan"     href="#scan"     data-label="Scan"></a>
+  <a class="section-dot" data-section="share"    href="#share"    data-label="Share"></a>
+  <a class="section-dot" data-section="tags"     href="#tags"     data-label="Tags"></a>
+</nav>
+
 <nav class="site-nav">
   <a class="nav-brand" href="#">
     <svg class="nav-inf" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -33,9 +46,11 @@
 <!-- ══════════════════════════════════════
      HERO
 ══════════════════════════════════════ -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-orb" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-c" aria-hidden="true"></div>
   <div class="hero-inner">
 
     <p class="hero-italic">Some things should last.</p>
@@ -93,7 +108,7 @@
 <!-- ══════════════════════════════════════
      VAULT GRID SHOWCASE  (light)
 ══════════════════════════════════════ -->
-<section class="showcase light-section">
+<section class="showcase light-section" id="memories">
   <div class="container showcase-layout reverse">
 
     <div class="showcase-phone reveal">
@@ -187,7 +202,7 @@
 <!-- ══════════════════════════════════════
      VAULT SHOWCASE  (dark)
 ══════════════════════════════════════ -->
-<section class="showcase dark-section">
+<section class="showcase dark-section" id="vault">
   <div class="container showcase-layout reverse">
 
     <div class="showcase-text reveal">
@@ -294,7 +309,7 @@
 <!-- ══════════════════════════════════════
      SCAN SHOWCASE  (light)
 ══════════════════════════════════════ -->
-<section class="showcase light-section">
+<section class="showcase light-section" id="scan">
   <div class="container showcase-layout reverse">
 
     <div class="showcase-phone reveal">
@@ -367,7 +382,7 @@
 <!-- ══════════════════════════════════════
      SHARE SHOWCASE  (dark)
 ══════════════════════════════════════ -->
-<section class="showcase dark-section">
+<section class="showcase dark-section" id="share">
   <div class="container showcase-layout reverse">
 
     <div class="showcase-text reveal">
@@ -456,7 +471,7 @@
 <!-- ══════════════════════════════════════
      TAGS SHOWCASE  (light)
 ══════════════════════════════════════ -->
-<section class="showcase light-section">
+<section class="showcase light-section" id="tags">
   <div class="container showcase-layout reverse">
 
     <div class="showcase-phone reveal">

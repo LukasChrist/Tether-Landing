@@ -61,22 +61,13 @@ a { text-decoration: none; color: inherit; }
   transition: background .4s ease, backdrop-filter .4s ease, border-color .4s ease;
 }
 
-/* frosted glass once user scrolls */
+/* stays transparent when scrolled — only blur, no fill */
 .site-nav.scrolled {
-  background: rgba(26, 22, 26, 0.75);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border-dark);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-/* over a light section — flip to dark text */
-.site-nav.light-bg {
-  background: rgba(250, 248, 244, 0.8);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(192, 92, 48, 0.1);
-}
-
+/* over a light section — flip text to dark, still no background fill */
 .site-nav.light-bg .nav-wordmark { color: var(--text-dark); }
 .site-nav.light-bg .nav-inf path  { stroke: var(--accent); }
 .site-nav.light-bg .nav-cta {
@@ -477,64 +468,69 @@ a { text-decoration: none; color: inherit; }
 .pillar-card {
   will-change: transform;
   transform-style: preserve-3d;
-  /* glass effect over the dark hero */
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.10) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  /* subtle accent glow on top edge */
-  box-shadow:
-    0 1px 0 0 rgba(192, 92, 48, 0.25) inset,
-    0 20px 60px rgba(0, 0, 0, 0.25);
-  border-radius: 22px;
-  padding: 2.25rem 1.75rem;
+  position: relative;
+  overflow: hidden;
+  /* warm dark parchment — belongs to the same palette as the hero */
+  background: linear-gradient(160deg, #28201E 0%, #211A18 100%);
+  border: 1px solid rgba(192, 92, 48, 0.12);
+  border-top-color: rgba(192, 92, 48, 0.22); /* faint warm top rim */
+  border-radius: 16px;
+  padding: 2rem 1.75rem 2.25rem;
   text-align: left;
-  transition: transform .3s var(--ease), box-shadow .3s, background .3s;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform .35s var(--ease), box-shadow .35s ease, border-color .35s ease;
 }
 
 .pillar-card:hover {
-  transform: translateY(-6px);
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(192, 92, 48, 0.06) 100%
-  );
-  box-shadow:
-    0 1px 0 0 rgba(192, 92, 48, 0.35) inset,
-    0 30px 80px rgba(192, 92, 48, 0.15);
+  border-color: rgba(192, 92, 48, 0.28);
+  border-top-color: rgba(192, 92, 48, 0.45);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), 0 0 0 0 transparent;
 }
 
+/* thin amber left-edge accent line */
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 2px;
+  height: 60%;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(to bottom, transparent, rgba(192, 92, 48, 0.5), transparent);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.pillar-card:hover::before { opacity: 1; }
+
 .pillar-icon {
-  width: 42px;
-  height: 42px;
-  background: linear-gradient(135deg, rgba(192, 92, 48, 0.2), rgba(192, 92, 48, 0.08));
-  border: 1px solid rgba(192, 92, 48, 0.2);
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  background: rgba(192, 92, 48, 0.1);
+  border: none;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   color: var(--accent);
 }
 
-.pillar-icon svg { width: 20px; height: 20px; }
+.pillar-icon svg { width: 18px; height: 18px; }
 
 .pillar-card h3 {
   font-family: var(--serif);
-  font-weight: 500;
-  font-size: 1.35rem;
-  color: var(--text-light);
-  margin-bottom: .45rem;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: rgba(240, 235, 232, 0.92);
+  margin-bottom: .5rem;
+  letter-spacing: -.01em;
 }
 
 .pillar-card p {
   font-size: .875rem;
-  line-height: 1.7;
-  color: var(--text-dim);
+  line-height: 1.75;
+  color: rgba(190, 175, 165, 0.65);
 }
 
 

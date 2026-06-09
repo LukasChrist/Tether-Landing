@@ -545,19 +545,19 @@ a { text-decoration: none; color: inherit; }
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
-  transition: opacity .9s var(--ease);
+  transition: opacity 1s var(--ease);
   pointer-events: none;
 }
 
 .showcase-deco.visible { opacity: 1; }
 
-.showcase-deco--left  { left: 1.5rem; }
-.showcase-deco--right { right: 1.5rem; }
+.showcase-deco--left  { left: 2rem; }
+.showcase-deco--right { right: 2rem; }
 
-.showcase-deco svg { display: block; }
+.showcase-deco svg { display: block; overflow: visible; }
 
-/* Hide below 1280px where margins don't exist */
-@media (max-width: 1280px) {
+/* Hide below 1300px where margins don't exist */
+@media (max-width: 1300px) {
   .showcase-deco { display: none; }
 }
 
@@ -1295,6 +1295,35 @@ a { text-decoration: none; color: inherit; }
   z-index: 200;
   transition: width .1s linear;
   box-shadow: 0 0 8px rgba(192, 92, 48, .5);
+}
+
+/* Gradient scrim — blurs and fades from the top edge downward */
+.top-scrim {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 99;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 22, 26, 0.45) 0%,
+    rgba(26, 22, 26, 0.18) 40%,
+    rgba(26, 22, 26, 0.04) 70%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  transition: opacity .4s ease;
+}
+
+/* Fade scrim out over light sections so it doesn't tint the cream bg */
+.top-scrim.light-mode {
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 248, 244, 0.5) 0%,
+    rgba(250, 248, 244, 0.15) 50%,
+    transparent 100%
+  );
 }
 
 

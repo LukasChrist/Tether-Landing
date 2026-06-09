@@ -1,7 +1,13 @@
+/* Always start at top on reload */
+history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
+
 /* ════════════════════════════════════════
    Navbar — transparent → frosted, light/dark aware
 ════════════════════════════════════════ */
-const Nav = document.querySelector('.site-nav');
+const Nav   = document.querySelector('.site-nav');
+const Scrim = document.querySelector('.top-scrim');
 
 // Add "scrolled" class once user leaves the very top
 window.addEventListener('scroll', () => {
@@ -32,6 +38,7 @@ function UpdateNavColor() {
   });
 
   Nav.classList.toggle('light-bg', IsLight);
+  if (Scrim) Scrim.classList.toggle('light-mode', IsLight);
 
 }
 

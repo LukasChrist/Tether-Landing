@@ -315,7 +315,7 @@ a { text-decoration: none; color: inherit; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.25rem;
   max-width: 960px;
-  margin: 0 auto;
+  margin: 4rem auto 0;
 }
 
 .pillar-card {
@@ -1024,8 +1024,12 @@ a { text-decoration: none; color: inherit; }
 footer {
   background: var(--dark);
   border-top: 1px solid var(--border-dark);
-  padding: 2rem;
+  padding: 4rem 2rem 2.5rem;
   text-align: center;
+}
+
+.footer-cta {
+  margin-bottom: 3rem;
 }
 
 .footer-brand {

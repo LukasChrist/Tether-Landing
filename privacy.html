@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Tether</title>
+  <meta name="description" content="Tether's privacy policy. Your memories are yours — here's exactly what we collect and why." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+
+    /* ── Privacy page layout ── */
+    .privacy-hero {
+      background: var(--dark);
+      padding: 10rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .privacy-hero .eyebrow {
+      color: var(--accent);
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 400;
+      color: var(--text-light);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .privacy-hero h1 em {
+      font-style: italic;
+      color: var(--soft);
+    }
+
+    .privacy-hero .subtitle {
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--text-dim);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .privacy-hero .updated {
+      margin-top: 1.8rem;
+      font-size: .78rem;
+      color: var(--text-muted);
+      letter-spacing: .04em;
+    }
+
+    /* ── Content area ── */
+    .privacy-body {
+      background: var(--cream);
+      padding: 5rem 2rem 7rem;
+    }
+
+    .privacy-container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ── Sections ── */
+    .privacy-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .privacy-section h2 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .privacy-section p {
+      font-family: var(--sans);
+      font-size: .97rem;
+      color: #4A3F38;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .privacy-section ul {
+      list-style: none;
+      padding: 0;
+      margin: .75rem 0 1rem;
+    }
+
+    .privacy-section ul li {
+      font-family: var(--sans);
+      font-size: .97rem;
+      color: #4A3F38;
+      line-height: 1.7;
+      padding: .4rem 0 .4rem 1.4rem;
+      position: relative;
+    }
+
+    .privacy-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: .9rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: .6;
+    }
+
+    /* ── Highlight box ── */
+    .privacy-callout {
+      background: #F0EBE3;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.1rem 1.4rem;
+      margin: 1.2rem 0;
+    }
+
+    .privacy-callout p {
+      margin: 0 !important;
+      font-size: .92rem !important;
+      color: #5A4A40 !important;
+    }
+
+    /* ── Contact block ── */
+    .privacy-contact {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .privacy-contact h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text-light);
+      margin-bottom: .7rem;
+      border: none;
+      padding: 0;
+    }
+
+    .privacy-contact p {
+      color: var(--text-dim);
+      font-size: .95rem;
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+    }
+
+    .privacy-contact a.contact-link {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .88rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      padding: .75rem 1.8rem;
+      border-radius: 100px;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .privacy-contact a.contact-link:hover {
+      background: var(--accent-deep);
+      transform: translateY(-1px);
+    }
+
+    /* ── Footer tweaks on this page ── */
+    footer {
+      border-top: 1px solid var(--border-dark);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<div class="top-scrim" aria-hidden="true"></div>
+
+<nav class="site-nav scrolled light-bg" style="background: rgba(247,244,239,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom-color: rgba(192,92,48,.1);">
+  <a class="nav-brand" href="index.html">
+    <svg class="nav-inf" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M100,50 C100,22 84,6 65,6 C26,6 6,27 6,50 C6,73 26,94 65,94 C84,94 100,78 100,50 C100,22 116,6 135,6 C174,6 194,27 194,50 C194,73 174,94 135,94 C116,94 100,78 100,50 Z"
+        stroke="#C05C30" stroke-width="8"/>
+    </svg>
+    <span class="nav-wordmark" style="color: var(--text-dark);">tether</span>
+  </a>
+  <a href="#" class="btn-cta nav-cta">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    App Store
+  </a>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="privacy-hero">
+  <p class="eyebrow">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">This policy covers the Tether website only. Here's exactly what this site does — and doesn't — collect.</p>
+  <p class="updated">Last updated: June 9, 2026</p>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     BODY
+══════════════════════════════════════ -->
+<div class="privacy-body">
+  <div class="privacy-container">
+
+    <div class="privacy-section">
+      <h2>The short version</h2>
+      <div class="privacy-callout">
+        <p>This website does not collect any personal information, set cookies, or run analytics. The only external service it contacts is Google Fonts. That's it.</p>
+      </div>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Who we are</h2>
+      <p>Tether is a private memory vault app for iOS. This policy covers the Tether marketing website only — not the app. The app has its own separate privacy policy.</p>
+      <p>If you have questions, reach us at <a href="mailto:lukaschristnyc@gmail.com" style="color: var(--accent); text-decoration: underline;">lukaschristnyc@gmail.com</a>.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>What this website collects</h2>
+      <p>Nothing, directly. This site has no forms, no sign-ups, no analytics scripts, and no tracking cookies. We do not collect your name, email address, or any other personal information when you visit.</p>
+      <p>The only external service this site contacts is <strong>Google Fonts</strong>, which serves the typefaces used on the page. When your browser loads a font, it makes a request to Google's servers — and as part of that standard HTTP request, Google receives your IP address. We have no control over how Google processes this. You can read <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">Google's Privacy Policy</a> for details.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Cookies</h2>
+      <p>This site sets no cookies of any kind — not for analytics, not for preferences, not for tracking.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Third-party links</h2>
+      <p>This site links to the Apple App Store. Clicking that link takes you to Apple's platform, which has its own privacy practices. We have no visibility into what Apple collects when you visit or download from the App Store.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Changes to this policy</h2>
+      <p>If we add new features to this website that affect privacy — such as a contact form or analytics — we will update this page and the date below before doing so.</p>
+    </div>
+
+    <div class="privacy-contact">
+      <h2>Questions?</h2>
+      <p>If anything here is unclear, get in touch. We respond personally.</p>
+      <a href="mailto:lukaschristnyc@gmail.com" class="contact-link">lukaschristnyc@gmail.com</a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">
+    <svg viewBox="0 0 200 100" fill="none" width="36" height="18" aria-hidden="true">
+      <path d="M100,50 C100,22 84,6 65,6 C26,6 6,27 6,50 C6,73 26,94 65,94 C84,94 100,78 100,50 C100,22 116,6 135,6 C174,6 194,27 194,50 C194,73 174,94 135,94 C116,94 100,78 100,50 Z" stroke="#C05C30" stroke-width="8"/>
+    </svg>
+    <span class="footer-name">tether</span>
+  </div>
+  <p class="footer-copy">© 2026 Tether. <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy Policy</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

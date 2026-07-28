@@ -2552,8 +2552,6 @@ footer {
 .faq-intro {
 
   align-self: start;
-  position: sticky;
-  top: 8rem;
 
 }
 
@@ -2707,8 +2705,85 @@ footer {
 .closing-action {
 
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+
+}
+
+.waitlist-form {
+
+  display: flex;
+  width: min(100%, 600px);
+  align-items: center;
+  gap: .65rem;
+
+}
+
+.waitlist-form input {
+
+  min-width: 0;
+  flex: 1;
+  padding: .85rem 1rem;
+  border: 1px solid rgba(240, 235, 239, .2);
+  border-radius: 100px;
+  outline: none;
+  background: rgba(255, 255, 255, .08);
+  color: var(--text-light);
+  font-family: var(--sans);
+  font-size: .85rem;
+
+}
+
+.waitlist-form input::placeholder {
+
+  color: rgba(240, 235, 239, .5);
+
+}
+
+.waitlist-form input:focus {
+
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(192, 92, 48, .18);
+
+}
+
+.waitlist-honeypot {
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+
+}
+
+.waitlist-form .closing-button {
+
+  white-space: nowrap;
+
+}
+
+.waitlist-feedback {
+
+  min-height: 1.25rem;
+  margin-top: .8rem;
+  color: var(--text-dim);
+  font-size: .78rem;
+  text-align: center;
+
+}
+
+.waitlist-feedback.is-success {
+
+  color: #E8B17B;
+
+}
+
+.waitlist-feedback.is-error {
+
+  color: #F0B1A0;
 
 }
 
@@ -2862,6 +2937,12 @@ footer {
 
   }
 
+  .waitlist-feedback {
+
+    text-align: left;
+
+  }
+
 }
 
 @media (max-width: 560px) {
@@ -2965,6 +3046,19 @@ footer {
     border-right: 0;
     border-left: 0;
     border-radius: 0;
+
+  }
+
+  .waitlist-form {
+
+    align-items: stretch;
+    flex-direction: column;
+
+  }
+
+  .waitlist-form .closing-button {
+
+    width: 100%;
 
   }
 

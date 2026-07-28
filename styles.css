@@ -22,6 +22,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -3891,6 +3892,195 @@ footer {
 
   .closing-action,
   .tether-waitlist-form {
+
+    width: 100%;
+
+  }
+
+}
+
+
+/* ════════════════════════════════════════
+   MODULAR PRICING SCALE
+   A single scale keeps the cards proportional as the viewport changes.
+════════════════════════════════════════ */
+.pricing-section {
+
+  --pricing-space-1: clamp(.55rem, .45rem + .25vw, .75rem);
+  --pricing-space-2: clamp(.9rem, .75rem + .45vw, 1.25rem);
+  --pricing-space-3: clamp(1.25rem, 1rem + .75vw, 2rem);
+  --pricing-space-4: clamp(2.5rem, 4vw, 4rem);
+  --pricing-copy-size: clamp(.78rem, .73rem + .12vw, .88rem);
+  --pricing-card-radius: clamp(1rem, .8rem + .5vw, 1.25rem);
+
+}
+
+.pricing-heading {
+
+  gap: clamp(1.5rem, 5vw, 5rem);
+  margin-bottom: var(--pricing-space-4);
+
+}
+
+.pricing-grid {
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--pricing-space-2);
+
+}
+
+.pricing-card,
+.pricing-card:last-child {
+
+  min-width: 0;
+  min-height: clamp(31rem, 42vw, 34rem);
+  padding: var(--pricing-space-3);
+  border-radius: var(--pricing-card-radius);
+
+}
+
+.pricing-card-top {
+
+  min-height: clamp(11.5rem, 15vw, 12.5rem);
+
+}
+
+.pricing-name {
+
+  margin-bottom: var(--pricing-space-3);
+  font-size: clamp(.58rem, .53rem + .12vw, .68rem);
+
+}
+
+.pricing-price {
+
+  margin-bottom: var(--pricing-space-1);
+  font-size: clamp(1.05rem, .95rem + .3vw, 1.4rem);
+
+}
+
+.pricing-price span {
+
+  font-size: clamp(2.2rem, 3vw, 3.1rem);
+
+}
+
+.pricing-yearly {
+
+  gap: var(--pricing-space-1);
+  margin: calc(var(--pricing-space-1) * -.6) 0 var(--pricing-space-2);
+  font-size: clamp(.68rem, .62rem + .12vw, .76rem);
+
+}
+
+.pricing-yearly span {
+
+  max-width: 100%;
+  padding: .3rem .55rem;
+  font-size: clamp(.53rem, .49rem + .1vw, .62rem);
+
+}
+
+.pricing-description,
+.pricing-features li {
+
+  font-size: var(--pricing-copy-size);
+
+}
+
+.pricing-features {
+
+  margin: var(--pricing-space-2) 0 var(--pricing-space-3);
+  padding-top: var(--pricing-space-2);
+  gap: var(--pricing-space-1);
+
+}
+
+.pricing-features li {
+
+  gap: var(--pricing-space-1);
+
+}
+
+.pricing-features li::before {
+
+  width: clamp(1rem, .9rem + .25vw, 1.1rem);
+  height: clamp(1rem, .9rem + .25vw, 1.1rem);
+
+}
+
+.pricing-button,
+.pricing-primary {
+
+  min-height: clamp(2.85rem, 2.6rem + .7vw, 3.15rem);
+  padding: .8rem var(--pricing-space-2);
+  font-size: clamp(.74rem, .68rem + .12vw, .84rem);
+
+}
+
+@media (max-width: 1100px) {
+
+  .pricing-grid {
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  }
+
+  .pricing-card:last-child {
+
+    grid-column: auto;
+
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .pricing-heading {
+
+    grid-template-columns: 1fr;
+    gap: var(--pricing-space-2);
+
+  }
+
+  .pricing-grid {
+
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--pricing-space-2);
+
+  }
+
+  .pricing-card,
+  .pricing-card:last-child {
+
+    min-height: 0;
+    padding: clamp(1.25rem, 5vw, 1.75rem);
+
+  }
+
+  .pricing-card-top {
+
+    min-height: 0;
+
+  }
+
+  .pricing-card--featured {
+
+    padding-top: clamp(2.1rem, 8vw, 2.6rem);
+
+  }
+
+  .pricing-yearly {
+
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .45rem;
+
+  }
+
+  .pricing-button,
+  .pricing-primary {
 
     width: 100%;
 

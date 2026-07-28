@@ -2471,6 +2471,57 @@ footer {
 
 }
 
+.pricing-billing-toggle {
+
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: fit-content;
+  margin: calc(var(--pricing-space-4) * -0.45) auto var(--pricing-space-3);
+  padding: .3rem;
+  gap: .25rem;
+  border: 1px solid var(--border-dark);
+  border-radius: 100px;
+  background: rgba(35, 29, 35, .72);
+
+}
+
+.pricing-billing-option {
+
+  padding: .65rem .9rem;
+  border: 0;
+  border-radius: 100px;
+  background: transparent;
+  color: rgba(240, 235, 239, .58);
+  cursor: pointer;
+  font: inherit;
+  font-size: clamp(.68rem, .62rem + .12vw, .76rem);
+  font-weight: 600;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+
+}
+
+.pricing-billing-option span {
+
+  color: var(--accent);
+  font-size: .85em;
+
+}
+
+.pricing-billing-option.is-selected {
+
+  background: var(--accent);
+  box-shadow: 0 .5rem 1.25rem rgba(192, 92, 48, .24);
+  color: #FFF8F3;
+
+}
+
+.pricing-billing-option.is-selected span {
+
+  color: inherit;
+
+}
+
 .pricing-heading .display-light {
 
   margin-bottom: 0;
@@ -3934,7 +3985,7 @@ footer {
 .pricing-card:last-child {
 
   min-width: 0;
-  min-height: clamp(31rem, 42vw, 34rem);
+  min-height: clamp(27rem, 37vw, 30rem);
   padding: var(--pricing-space-3);
   border-radius: var(--pricing-card-radius);
 
@@ -3978,6 +4029,8 @@ footer {
 
   max-width: 100%;
   padding: .3rem .55rem;
+  background: rgba(192, 92, 48, .28);
+  color: #F4A17B;
   font-size: clamp(.53rem, .49rem + .1vw, .62rem);
 
 }
@@ -4010,11 +4063,16 @@ footer {
 
 }
 
-.pricing-button,
-.pricing-primary {
+.pricing-cta {
 
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(100%, 34rem);
   min-height: clamp(2.85rem, 2.6rem + .7vw, 3.15rem);
+  margin: var(--pricing-space-3) auto 0;
   padding: .8rem var(--pricing-space-2);
+  justify-content: center;
   font-size: clamp(.74rem, .68rem + .12vw, .84rem);
 
 }
@@ -4041,6 +4099,12 @@ footer {
 
     grid-template-columns: 1fr;
     gap: var(--pricing-space-2);
+
+  }
+
+  .pricing-billing-toggle {
+
+    margin-top: 0;
 
   }
 
@@ -4079,8 +4143,7 @@ footer {
 
   }
 
-  .pricing-button,
-  .pricing-primary {
+  .pricing-cta {
 
     width: 100%;
 

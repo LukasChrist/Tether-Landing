@@ -607,6 +607,10 @@
       </div>
       <p class="body-light">Start free, then choose the storage and sharing space that fits the memories you keep together.</p>
     </div>
+    <div class="pricing-billing-toggle reveal" role="group" aria-label="Billing frequency">
+      <button class="pricing-billing-option" type="button" data-pricing-billing="monthly" aria-pressed="false">Monthly</button>
+      <button class="pricing-billing-option is-selected" type="button" data-pricing-billing="yearly" aria-pressed="true">Yearly</button>
+    </div>
     <div class="pricing-grid">
       <article class="pricing-card reveal">
         <div class="pricing-card-top">
@@ -620,14 +624,13 @@
           <li>No shared vaults</li>
           <li>No additional members per vault</li>
         </ul>
-        <a href="#waitlist" class="pricing-button"><svg class="waitlist-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Join the waitlist</a>
       </article>
 
       <article class="pricing-card reveal" style="transition-delay:.1s">
         <div class="pricing-card-top">
           <p class="pricing-name">Individual</p>
-          <p class="pricing-price"><span>$4.99</span> / month</p>
-          <p class="pricing-yearly"><strong>$49.90 / year</strong><span>Yearly billing = 2 months free</span></p>
+          <p class="pricing-price" data-monthly-price="$4.99" data-yearly-monthly-price="$4.16"><span>$4.16</span> / month</p>
+          <p class="pricing-yearly" data-monthly-detail="Billed monthly" data-yearly-total="$49.90 / year" data-yearly-savings="Yearly billing = 2 months free"><strong>$49.90 / year</strong><span>Yearly billing = 2 months free</span></p>
           <p class="pricing-description">More room for your personal archive, plus a shared place for your closest people.</p>
         </div>
         <ul class="pricing-features">
@@ -636,15 +639,14 @@
           <li>1 shared vault</li>
           <li>Up to 5 additional members per vault</li>
         </ul>
-        <a href="#waitlist" class="pricing-button"><svg class="waitlist-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Join the waitlist</a>
       </article>
 
       <article class="pricing-card pricing-card--featured reveal" style="transition-delay:.2s">
         <div class="pricing-badge">MOST POPULAR</div>
         <div class="pricing-card-top">
           <p class="pricing-name">Pro</p>
-          <p class="pricing-price"><span>$7.99</span> / month</p>
-          <p class="pricing-yearly"><strong>$79.90 / year</strong><span>Yearly billing = 2 months free</span></p>
+          <p class="pricing-price" data-monthly-price="$7.99" data-yearly-monthly-price="$6.66"><span>$6.66</span> / month</p>
+          <p class="pricing-yearly" data-monthly-detail="Billed monthly" data-yearly-total="$79.90 / year" data-yearly-savings="Yearly billing = 2 months free"><strong>$79.90 / year</strong><span>Yearly billing = 2 months free</span></p>
           <p class="pricing-description">For growing collections and more of the people who help keep them alive.</p>
         </div>
         <ul class="pricing-features">
@@ -653,14 +655,13 @@
           <li>3 shared vaults</li>
           <li>Up to 10 additional members per vault</li>
         </ul>
-        <a href="#waitlist" class="btn-cta pricing-primary"><svg class="waitlist-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Join the waitlist</a>
       </article>
 
       <article class="pricing-card reveal" style="transition-delay:.3s">
         <div class="pricing-card-top">
           <p class="pricing-name">Max</p>
-          <p class="pricing-price"><span>$11.99</span> / month</p>
-          <p class="pricing-yearly"><strong>$119.90 / year</strong><span>Yearly billing = 2 months free</span></p>
+          <p class="pricing-price" data-monthly-price="$11.99" data-yearly-monthly-price="$9.99"><span>$9.99</span> / month</p>
+          <p class="pricing-yearly" data-monthly-detail="Billed monthly" data-yearly-total="$119.90 / year" data-yearly-savings="Yearly billing = 2 months free"><strong>$119.90 / year</strong><span>Yearly billing = 2 months free</span></p>
           <p class="pricing-description">The fullest Tether experience for every vault, every chapter, and the whole family.</p>
         </div>
         <ul class="pricing-features">
@@ -669,9 +670,9 @@
           <li>Unlimited shared vaults</li>
           <li>Up to 15 additional members per vault</li>
         </ul>
-        <a href="#waitlist" class="pricing-button"><svg class="waitlist-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Join the waitlist</a>
       </article>
     </div>
+    <a href="#waitlist" class="btn-cta pricing-cta reveal"><svg class="waitlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Join the waitlist</a>
     <p class="pricing-note">All plans are private by default. Upgrade, downgrade, or export your files at any time.</p>
   </div>
 </section>

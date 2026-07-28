@@ -17,7 +17,7 @@ const IsTouch   = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 const Nav        = document.querySelector('.site-nav');
 const Scrim      = document.querySelector('.top-scrim');
 const ProgressBar = document.querySelector('.scroll-progress');
-const AllSections = document.querySelectorAll('.light-section, .dark-section, .hero, footer');
+const AllSections = document.querySelectorAll('.light-section, .cream-section, .dark-section, .hero, footer');
 const PhoneWraps  = document.querySelectorAll('.phone-wrap');
 
 let ScrollY       = 0;
@@ -48,7 +48,7 @@ function RunScrollWork() {
       const T = Section.getBoundingClientRect().top;
       const B = T + Section.offsetHeight;
       if (SampleY >= T && SampleY <= B) {
-        IsLight = Section.classList.contains('light-section');
+        IsLight = Section.classList.contains('light-section') || Section.classList.contains('cream-section');
       }
     });
 
@@ -120,6 +120,56 @@ const DecoObserver = new IntersectionObserver(
 );
 
 document.querySelectorAll('.showcase').forEach((s) => DecoObserver.observe(s));
+
+
+/* ════════════════════════════════════════
+   Pricing billing frequency
+════════════════════════════════════════ */
+const PricingBillingOptions = document.querySelectorAll('[data-pricing-billing]');
+const PricingPrices = document.querySelectorAll('[data-monthly-price]');
+const PricingDetails = document.querySelectorAll('[data-monthly-detail]');
+
+function SetPricingBilling(BillingFrequency) {
+
+  PricingBillingOptions.forEach((PricingBillingOption) => {
+
+    const IsSelected = PricingBillingOption.dataset.pricingBilling === BillingFrequency;
+    PricingBillingOption.classList.toggle('is-selected', IsSelected);
+    PricingBillingOption.setAttribute('aria-pressed', String(IsSelected));
+
+  });
+
+  PricingPrices.forEach((PricingPrice) => {
+
+    const PriceValue = BillingFrequency === 'yearly' ? PricingPrice.dataset.yearlyMonthlyPrice : PricingPrice.dataset.monthlyPrice;
+    PricingPrice.innerHTML = `<span>${PriceValue}</span> / month`;
+
+  });
+
+  PricingDetails.forEach((PricingDetail) => {
+
+    if (BillingFrequency === 'yearly') {
+
+      PricingDetail.innerHTML = `<strong>${PricingDetail.dataset.yearlyTotal}</strong><span>${PricingDetail.dataset.yearlySavings}</span>`;
+      return;
+
+    }
+
+    PricingDetail.textContent = PricingDetail.dataset.monthlyDetail;
+
+  });
+
+}
+
+PricingBillingOptions.forEach((PricingBillingOption) => {
+
+  PricingBillingOption.addEventListener('click', () => {
+
+    SetPricingBilling(PricingBillingOption.dataset.pricingBilling);
+
+  });
+
+});
 
 
 /* ════════════════════════════════════════

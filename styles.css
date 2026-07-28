@@ -2933,6 +2933,12 @@ footer {
 
 }
 
+.waitlist-loader[hidden] {
+
+  display: none;
+
+}
+
 .waitlist-honeypot {
 
   position: absolute;

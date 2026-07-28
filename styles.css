@@ -597,6 +597,7 @@ a { text-decoration: none; color: inherit; }
   mask-image:         linear-gradient(180deg, transparent 0%, black 30%, black 70%, transparent 100%);
 }
 .light-section { background: var(--warm-white); }
+.cream-section { background: var(--cream); }
 
 .showcase-layout {
   display: flex;
@@ -1639,8 +1640,10 @@ footer {
 
 .hero {
 
-  min-height: auto;
+  /* Keep the opening product story anchored to the first viewport. */
+  min-height: 100svh;
   padding: 9.5rem 2rem 5rem;
+  justify-content: center;
   text-align: left;
 
 }
@@ -2367,7 +2370,7 @@ footer {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
   gap: 1rem;
 
@@ -2377,7 +2380,7 @@ footer {
 
   position: relative;
   display: flex;
-  min-height: 510px;
+  min-height: 530px;
   padding: 2rem;
   flex-direction: column;
   border: 1px solid var(--border-dark);
@@ -2432,14 +2435,14 @@ footer {
   margin-bottom: 1rem;
   color: var(--text-light);
   font-family: var(--serif);
-  font-size: 2.15rem;
+  font-size: 1.4rem;
   font-weight: 300;
 
 }
 
 .pricing-price span {
 
-  font-size: 3.8rem;
+  font-size: clamp(2.25rem, 3vw, 3.1rem);
 
 }
 
@@ -2756,19 +2759,6 @@ footer {
   .pricing-grid {
 
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  }
-
-  .pricing-card:last-child {
-
-    grid-column: 1 / -1;
-    min-height: 440px;
-
-  }
-
-  .pricing-card:last-child .pricing-card-top {
-
-    min-height: 160px;
 
   }
 

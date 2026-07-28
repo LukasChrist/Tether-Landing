@@ -41,6 +41,18 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
+.sr-only {
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+
+}
+
 
 /* ════════════════════════════════════════
    WAITLIST CONFIRMATION PAGE
@@ -2906,6 +2918,14 @@ footer {
   font-size: .88rem;
   font-weight: 500;
   white-space: nowrap;
+
+}
+
+.tether-mailerlite-form .ml-form-embedSubmit button.loading {
+
+  display: none;
+  align-items: center;
+  justify-content: center;
 
 }
 

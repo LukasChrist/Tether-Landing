@@ -2713,7 +2713,7 @@ footer {
 .waitlist-form {
 
   display: flex;
-  width: min(100%, 430px);
+  width: min(100%, 600px);
   align-items: center;
   gap: .65rem;
 

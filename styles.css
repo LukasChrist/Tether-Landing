@@ -43,6 +43,112 @@ a { text-decoration: none; color: inherit; }
 
 
 /* ════════════════════════════════════════
+   WAITLIST CONFIRMATION PAGE
+════════════════════════════════════════ */
+.waitlist-confirmed-page {
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse 85% 70% at 15% 5%, rgba(192, 92, 48, 0.3), transparent 58%),
+    radial-gradient(ellipse 65% 55% at 85% 100%, rgba(120, 40, 20, 0.2), transparent 65%),
+    var(--dark);
+  color: var(--text-light);
+}
+
+.waitlist-confirmed-main {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.waitlist-confirmed-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(90deg, transparent 0, transparent 28px, rgba(255, 255, 255, 0.025) 28px, rgba(255, 255, 255, 0.025) 29px);
+  -webkit-mask-image: radial-gradient(ellipse 100% 90% at 50% 0%, black 0, transparent 80%);
+  mask-image: radial-gradient(ellipse 100% 90% at 50% 0%, black 0, transparent 80%);
+}
+
+.waitlist-confirmed-brand {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.waitlist-confirmed-brand svg {
+  width: 34px;
+  height: 17px;
+}
+
+.waitlist-confirmed-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 36rem);
+  padding: clamp(2.5rem, 7vw, 4.5rem);
+  text-align: center;
+  background: rgba(35, 29, 35, 0.78);
+  border: 1px solid var(--border-dark);
+  border-radius: 1.5rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.waitlist-confirmed-check {
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  margin: 0 auto 1.75rem;
+  border: 1px solid rgba(192, 92, 48, 0.7);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.75rem;
+  background: var(--accent);
+}
+
+.waitlist-confirmed-eyebrow {
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+}
+
+.waitlist-confirmed-card h1 {
+  margin-bottom: 1rem;
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.waitlist-confirmed-card p:not(.waitlist-confirmed-eyebrow) {
+  max-width: 34ch;
+  margin: 0 auto;
+  color: rgba(240, 235, 239, 0.72);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.waitlist-confirmed-button {
+  display: inline-flex;
+  margin-top: 2rem;
+}
+
+
+/* ════════════════════════════════════════
    NAV
 ════════════════════════════════════════ */
 .site-nav {
@@ -2446,6 +2552,38 @@ footer {
 
 }
 
+.pricing-yearly {
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .45rem .7rem;
+  margin: -0.45rem 0 1rem;
+  color: rgba(240, 235, 239, .62);
+  font-size: .72rem;
+
+}
+
+.pricing-yearly strong {
+
+  color: rgba(240, 235, 239, .86);
+  font-weight: 500;
+
+}
+
+.pricing-yearly span {
+
+  padding: .26rem .5rem;
+  border-radius: 100px;
+  background: rgba(192, 92, 48, .16);
+  color: #E8A27D;
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+
+}
+
 .pricing-description {
 
   max-width: 36ch;
@@ -2710,19 +2848,24 @@ footer {
 
 }
 
-.waitlist-form {
+.tether-mailerlite-form {
 
-  display: flex;
   width: min(100%, 600px);
-  align-items: center;
+
+}
+
+.tether-mailerlite-form .ml-block-form {
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: .65rem;
 
 }
 
-.waitlist-form input {
+.tether-mailerlite-form .ml-form-formContent input {
 
+  width: 100%;
   min-width: 0;
-  flex: 1;
   padding: .85rem 1rem;
   border: 1px solid rgba(240, 235, 239, .2);
   border-radius: 100px;
@@ -2734,56 +2877,67 @@ footer {
 
 }
 
-.waitlist-form input::placeholder {
+.tether-mailerlite-form .ml-form-formContent input::placeholder {
 
   color: rgba(240, 235, 239, .5);
 
 }
 
-.waitlist-form input:focus {
+.tether-mailerlite-form .ml-form-formContent input:focus {
 
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(192, 92, 48, .18);
 
 }
 
-.waitlist-honeypot {
+.tether-mailerlite-form .ml-form-embedSubmit button {
 
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
+  display: inline-flex;
+  min-height: 100%;
+  align-items: center;
+  gap: .55rem;
+  padding: .9rem 1.25rem;
+  border: 0;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #D46A38 0%, #C05C30 50%, #A84E28 100%);
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: .88rem;
+  font-weight: 500;
   white-space: nowrap;
 
 }
 
-.waitlist-form .closing-button {
+.tether-mailerlite-form .ml-form-recaptcha {
 
-  white-space: nowrap;
-
-}
-
-.waitlist-feedback {
-
-  min-height: 1.25rem;
-  margin-top: .8rem;
-  color: var(--text-dim);
-  font-size: .78rem;
-  text-align: center;
+  grid-column: 1 / -1;
+  margin-top: .4rem;
 
 }
 
-.waitlist-feedback.is-success {
+.tether-mailerlite-form .ml-form-successBody {
 
   color: #E8B17B;
+  font-size: .9rem;
 
 }
 
-.waitlist-feedback.is-error {
+.waitlist-loader {
 
-  color: #F0B1A0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, .35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: waitlist-spin .8s linear infinite;
+
+}
+
+@keyframes waitlist-spin {
+
+  to { transform: rotate(360deg); }
 
 }
 
@@ -2937,12 +3091,6 @@ footer {
 
   }
 
-  .waitlist-feedback {
-
-    text-align: left;
-
-  }
-
 }
 
 @media (max-width: 560px) {
@@ -3049,16 +3197,205 @@ footer {
 
   }
 
-  .waitlist-form {
+  .tether-mailerlite-form .ml-block-form {
 
-    align-items: stretch;
-    flex-direction: column;
+    grid-template-columns: 1fr;
 
   }
 
-  .waitlist-form .closing-button {
+  .tether-mailerlite-form .ml-form-embedSubmit button {
 
     width: 100%;
+    justify-content: center;
+
+  }
+
+}
+
+
+/* ════════════════════════════════════════
+   FLUID BROWSER BREAKPOINTS
+   Keep the desktop composition comfortable as the viewport narrows before
+   it reaches the dedicated phone layout.
+════════════════════════════════════════ */
+@media (max-width: 1180px) {
+
+  .site-nav {
+
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+
+  }
+
+  .nav-links {
+
+    display: none;
+
+  }
+
+  .hero {
+
+    min-height: auto;
+    padding-top: 8.5rem;
+    padding-bottom: 5.5rem;
+
+  }
+
+  .hero-layout {
+
+    grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr);
+    gap: clamp(2.5rem, 5vw, 4rem);
+
+  }
+
+  .hero-heading {
+
+    font-size: clamp(3.5rem, 6.5vw, 5.3rem);
+
+  }
+
+  .hero-memory-grid {
+
+    min-height: 290px;
+
+  }
+
+  .section-intro {
+
+    gap: clamp(2rem, 5vw, 4rem);
+
+  }
+
+  .showcase-layout {
+
+    gap: clamp(3.5rem, 7vw, 6rem);
+
+  }
+
+}
+
+@media (max-width: 960px) {
+
+  .hero-layout {
+
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+
+  }
+
+  .hero-copy {
+
+    max-width: 680px;
+
+  }
+
+  .hero-product {
+
+    width: min(100%, 680px);
+    margin: 0;
+
+  }
+
+  .hero-memory-grid {
+
+    min-height: 340px;
+
+  }
+
+  .section-intro {
+
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+
+  }
+
+  .section-intro .eyebrow {
+
+    margin-bottom: 0;
+
+  }
+
+  .section-intro .body-dark {
+
+    max-width: 60ch;
+    padding-bottom: 0;
+
+  }
+
+  .process-card {
+
+    min-height: 275px;
+    padding: 1.5rem;
+
+  }
+
+  .pricing-grid {
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  }
+
+  .pricing-card:last-child {
+
+    grid-column: 1 / -1;
+
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .container {
+
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+
+  }
+
+  .hero {
+
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+
+  }
+
+  .hero-product {
+
+    width: 100%;
+
+  }
+
+  .hero-memory-grid {
+
+    grid-template-rows: repeat(2, minmax(115px, 1fr));
+    min-height: 275px;
+
+  }
+
+  .showcase-layout,
+  .showcase-layout.reverse {
+
+    gap: 2.75rem;
+
+  }
+
+  .showcase-text {
+
+    max-width: 460px;
+
+  }
+
+  .pricing-heading {
+
+    padding: 1.75rem;
+
+  }
+
+  .closing-card {
+
+    gap: 2rem;
+    padding: 2.5rem;
 
   }
 
@@ -3075,6 +3412,455 @@ footer {
 
     opacity: 1;
     animation: none;
+
+  }
+
+}
+
+
+/* ════════════════════════════════════════
+   MOBILE-FIRST COMPOSITION
+   The desktop page is intentionally spacious. On phones, the experience
+   becomes a short editorial sequence with smaller, more focused previews.
+════════════════════════════════════════ */
+.nav-cta-mobile-label {
+
+  display: none;
+
+}
+
+@media (max-width: 560px) {
+
+  html {
+
+    scroll-padding-top: 4.5rem;
+
+  }
+
+  .site-nav {
+
+    min-height: 4.25rem;
+    padding: .75rem 1rem;
+    background: rgba(26, 22, 26, .7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+  }
+
+  .site-nav.light-bg {
+
+    background: rgba(250, 248, 244, .78);
+
+  }
+
+  .nav-inf {
+
+    width: 29px;
+    height: 15px;
+
+  }
+
+  .nav-wordmark {
+
+    font-size: 1.25rem;
+
+  }
+
+  .nav-cta {
+
+    display: inline-flex;
+    padding: .58rem .85rem;
+    gap: .35rem;
+    font-size: .72rem;
+
+  }
+
+  .nav-cta .waitlist-icon,
+  .nav-cta-desktop-label {
+
+    display: none;
+
+  }
+
+  .nav-cta-mobile-label {
+
+    display: inline;
+
+  }
+
+  .hero {
+
+    min-height: auto;
+    padding: 7.5rem 1.25rem 3.25rem;
+
+  }
+
+  .hero-layout {
+
+    gap: 2.75rem;
+
+  }
+
+  .hero-copy {
+
+    text-align: left;
+
+  }
+
+  .hero-caps {
+
+    margin-bottom: .9rem;
+    letter-spacing: .18em;
+
+  }
+
+  .hero-heading {
+
+    max-width: 10ch;
+    margin-bottom: 1.15rem;
+    font-size: clamp(2.85rem, 13.5vw, 4rem);
+    line-height: 1;
+
+  }
+
+  .hero-sub {
+
+    margin-bottom: 1.5rem;
+    font-size: .93rem;
+    line-height: 1.6;
+
+  }
+
+  .hero-actions {
+
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+
+  }
+
+  .hero-btn {
+
+    padding: .8rem 1rem;
+
+  }
+
+  .hero-proof {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem .75rem;
+    margin-top: 1.45rem;
+
+  }
+
+  .hero-proof span {
+
+    font-size: .62rem;
+
+  }
+
+  .hero-proof span:last-child {
+
+    grid-column: 1 / -1;
+
+  }
+
+  .hero-product {
+
+    width: 100%;
+    margin: 0;
+    padding: 0 0 2.75rem;
+
+  }
+
+  .hero-product-window {
+
+    border-radius: 18px;
+
+  }
+
+  .hero-product-bar {
+
+    padding: .7rem .8rem;
+
+  }
+
+  .hero-product-header {
+
+    display: block;
+    padding: 1.1rem 1rem .85rem;
+
+  }
+
+  .hero-product-header h2 {
+
+    font-size: 1.4rem;
+
+  }
+
+  .hero-family-avatars {
+
+    display: none;
+
+  }
+
+  .hero-memory-grid {
+
+    grid-template-columns: 1.1fr .9fr;
+    grid-template-rows: 170px;
+    gap: .55rem;
+    min-height: 0;
+    padding: 0 .65rem .65rem;
+
+  }
+
+  .hero-memory-card {
+
+    padding: .75rem;
+    border-radius: 11px;
+
+  }
+
+  .hero-memory-card--drawing {
+
+    grid-column: auto;
+    grid-row: auto;
+
+  }
+
+  .hero-memory-card--video {
+
+    display: none;
+
+  }
+
+  .hero-memory-card strong {
+
+    font-size: .86rem;
+
+  }
+
+  .hero-file-type {
+
+    top: .55rem;
+    left: .55rem;
+    font-size: .4rem;
+
+  }
+
+  .hero-notification {
+
+    right: .75rem;
+    bottom: 0;
+    left: .75rem;
+    min-width: 0;
+    padding: .7rem .8rem;
+
+  }
+
+  .hero-notification-avatar {
+
+    width: 29px;
+    height: 29px;
+
+  }
+
+  .hero-notification strong {
+
+    font-size: .6rem;
+
+  }
+
+  .hero-notification div span {
+
+    font-size: .54rem;
+
+  }
+
+  .process-section,
+  .showcase,
+  .pricing-section,
+  .faq-section {
+
+    padding-top: 4.25rem;
+    padding-bottom: 4.25rem;
+
+  }
+
+  .section-intro {
+
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+
+  }
+
+  .section-intro .eyebrow,
+  .section-intro .display-dark,
+  .section-intro .body-dark,
+  .showcase-text,
+  .eyebrow,
+  .light-eye {
+
+    text-align: left;
+
+  }
+
+  .display-dark,
+  .display-light {
+
+    font-size: clamp(2.15rem, 10vw, 3rem);
+    line-height: 1.04;
+
+  }
+
+  .process-grid {
+
+    gap: .75rem;
+
+  }
+
+  .process-card {
+
+    display: grid;
+    min-height: 0;
+    padding: 1.25rem;
+    grid-template-columns: 3.2rem 1fr;
+    column-gap: .75rem;
+
+  }
+
+  .process-number {
+
+    grid-row: 1 / span 3;
+    margin: 0;
+    font-size: 2.35rem;
+
+  }
+
+  .process-label {
+
+    margin-bottom: .35rem;
+
+  }
+
+  .process-card h3 {
+
+    margin-bottom: .45rem;
+    font-size: 1.3rem;
+
+  }
+
+  .process-card > p:last-child {
+
+    font-size: .8rem;
+    line-height: 1.55;
+
+  }
+
+  .showcase-layout,
+  .showcase-layout.reverse {
+
+    gap: 2.5rem;
+
+  }
+
+  .showcase-phone,
+  .showcase-layout.reverse .showcase-phone {
+
+    order: 0;
+
+  }
+
+  .showcase-text {
+
+    order: -1;
+
+  }
+
+  .phone {
+
+    width: 230px;
+
+  }
+
+  .pricing-heading {
+
+    padding: 1.5rem;
+    border-radius: 16px;
+
+  }
+
+  .pricing-grid {
+
+    gap: .85rem;
+
+  }
+
+  .pricing-card,
+  .pricing-card:last-child {
+
+    min-height: 0;
+    padding: 1.4rem;
+
+  }
+
+  .pricing-card--featured {
+
+    padding-top: 2.2rem;
+
+  }
+
+  .pricing-price span {
+
+    font-size: 2.45rem;
+
+  }
+
+  .pricing-features {
+
+    gap: .6rem;
+    margin: 1.35rem 0;
+
+  }
+
+  .pricing-button,
+  .pricing-primary {
+
+    width: 100%;
+    justify-content: center;
+
+  }
+
+  .faq-layout {
+
+    gap: 2.25rem;
+
+  }
+
+  .faq-item summary {
+
+    padding: 1.1rem 0;
+    font-size: .95rem;
+
+  }
+
+  .closing-section {
+
+    padding: 0 0 3rem;
+
+  }
+
+  .closing-card {
+
+    padding: 2.5rem 1.25rem;
+
+  }
+
+  .closing-action,
+  .tether-mailerlite-form {
+
+    width: 100%;
 
   }
 

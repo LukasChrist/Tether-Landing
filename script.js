@@ -195,3 +195,116 @@ if (scanningLabel) {
     scanningLabel.style.opacity = scanningLabel.style.opacity === '0.15' ? '0.55' : '0.15';
   }, 900);
 }
+
+
+/* ════════════════════════════════════════
+   Cloudflare waitlist
+════════════════════════════════════════ */
+const WaitlistForm = document.querySelector('#tether-waitlist-form');
+const WaitlistStatus = document.querySelector('#tether-waitlist-status');
+const WaitlistSubmitButton = WaitlistForm?.querySelector('button[type="submit"]');
+const WaitlistButtonLabel = WaitlistForm?.querySelector('.waitlist-button-label');
+const WaitlistLoader = WaitlistForm?.querySelector('.waitlist-loader');
+const TurnstileContainer = document.querySelector('#tether-turnstile');
+const TurnstileSiteKey = window.TetherWaitlistConfig?.turnstileSiteKey;
+
+let TurnstileWidgetId = null;
+
+if (TurnstileSiteKey && TurnstileContainer) {
+
+  const TurnstileScript = document.createElement('script');
+  TurnstileScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  TurnstileScript.async = true;
+  TurnstileScript.onload = () => {
+
+    TurnstileWidgetId = window.turnstile.render(TurnstileContainer, {
+      sitekey: TurnstileSiteKey,
+      theme: 'dark',
+    });
+
+  };
+  document.head.appendChild(TurnstileScript);
+
+}
+
+if (WaitlistForm && WaitlistStatus && WaitlistSubmitButton && WaitlistButtonLabel && WaitlistLoader) {
+
+  WaitlistForm.addEventListener('submit', async (Event) => {
+
+    Event.preventDefault();
+
+    if (!WaitlistForm.reportValidity()) {
+
+      return;
+
+    }
+
+    SetWaitlistSubmitting(true);
+
+    try {
+
+      const Response = await fetch(WaitlistForm.action, {
+        method: 'POST',
+        body: new FormData(WaitlistForm),
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+      const Result = await Response.json();
+
+      SetWaitlistStatus(Result.message || 'Something went wrong. Please try again.', !Response.ok);
+
+      if (Response.ok) {
+
+        WaitlistForm.reset();
+
+      }
+
+    } catch (Error) {
+
+      console.error('Waitlist request failed.', Error);
+      SetWaitlistStatus('Something went wrong. Please try again.', true);
+
+    } finally {
+
+      if (TurnstileWidgetId !== null && window.turnstile) {
+
+        window.turnstile.reset(TurnstileWidgetId);
+
+      }
+
+      SetWaitlistSubmitting(false);
+
+    }
+
+  });
+
+}
+
+function SetWaitlistSubmitting(IsSubmitting) {
+
+  if (!WaitlistSubmitButton || !WaitlistButtonLabel || !WaitlistLoader) {
+
+    return;
+
+  }
+
+  WaitlistSubmitButton.disabled = IsSubmitting;
+  WaitlistButtonLabel.hidden = IsSubmitting;
+  WaitlistLoader.hidden = !IsSubmitting;
+
+}
+
+function SetWaitlistStatus(Message, IsError) {
+
+  if (!WaitlistStatus) {
+
+    return;
+
+  }
+
+  WaitlistStatus.textContent = Message;
+  WaitlistStatus.hidden = false;
+  WaitlistStatus.classList.toggle('is-error', IsError);
+
+}

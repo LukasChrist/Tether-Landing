@@ -748,30 +748,19 @@
       <p class="body-light">Join the waitlist and be among the first families invited to Tether.</p>
     </div>
     <div class="closing-action">
-      <div id="mlb2-44238230" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44238230 tether-mailerlite-form">
-        <div class="ml-form-embedWrapper embedForm">
-          <div class="ml-form-embedBody row-form">
-            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2540120/forms/194264347238729221/subscribe" data-code="" method="post" target="_blank">
-              <div class="ml-form-formContent">
-                <label class="sr-only" for="tether-waitlist-email">Email address</label>
-                <input id="tether-waitlist-email" aria-label="Email address" aria-required="true" type="email" name="fields[email]" placeholder="Your email address" autocomplete="email" required />
-              </div>
-              <div class="ml-form-embedSubmit">
-                <button type="submit" class="primary"><svg class="waitlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Join the waitlist</button>
-                <button disabled type="button" class="loading" aria-label="Joining the waitlist"><span class="waitlist-loader" aria-hidden="true"></span></button>
-              </div>
-              <div class="ml-form-recaptcha ml-validate-required">
-                <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
-              </div>
-              <input type="hidden" name="ml-submit" value="1" />
-              <input type="hidden" name="anticsrf" value="true" />
-            </form>
-          </div>
-          <div class="ml-form-successBody row-success" hidden aria-live="polite">
-            <p>Check your inbox to confirm your spot.</p>
-          </div>
+      <form id="tether-waitlist-form" class="tether-waitlist-form" action="/api/waitlist" method="post" novalidate>
+        <div class="waitlist-form-fields">
+          <label class="sr-only" for="tether-waitlist-email">Email address</label>
+          <input id="tether-waitlist-email" aria-describedby="tether-waitlist-status" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
+          <button type="submit"><svg class="waitlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg><span class="waitlist-button-label">Join the waitlist</span><span class="waitlist-loader" hidden aria-hidden="true"></span></button>
         </div>
-      </div>
+        <div class="waitlist-honeypot" aria-hidden="true">
+          <label for="tether-waitlist-website">Website</label>
+          <input id="tether-waitlist-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <div id="tether-turnstile" class="waitlist-turnstile" aria-live="polite"></div>
+        <p id="tether-waitlist-status" class="waitlist-status" hidden aria-live="polite"></p>
+      </form>
       <p class="cta-fine">We will only email you about Tether early access.</p>
     </div>
   </div>
@@ -792,23 +781,10 @@
 </footer>
 
 <script>
-  function ml_webform_success_44238230() {
-
-    const WaitlistForm = document.querySelector('.ml-subscribe-form-44238230 .row-form');
-    const WaitlistSuccess = document.querySelector('.ml-subscribe-form-44238230 .row-success');
-
-    if (WaitlistForm && WaitlistSuccess) {
-
-      WaitlistForm.hidden = true;
-      WaitlistSuccess.hidden = false;
-
-    }
-
-  }
+  window.TetherWaitlistConfig = {
+    turnstileSiteKey: '0x4AAAAAAEAP4qFyWYZn2Zbh'
+  };
 </script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
-<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519"></script>
-<script>fetch('https://assets.mailerlite.com/jsonp/2540120/forms/194264347238729221/takel');</script>
 <script src="script.js"></script>
 </body>
 </html>

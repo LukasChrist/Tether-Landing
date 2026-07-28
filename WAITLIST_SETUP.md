@@ -1,11 +1,7 @@
 # Waitlist Setup
 
-The Tether waitlist uses MailerLite form `44238230`. Its embedded form sends entries directly to the MailerLite subscriber list.
+The live site posts to the custom Cloudflare waitlist endpoint. It will show a setup message until the Cloudflare database, spam-protection, and email-sending bindings are configured.
 
-Before publishing, confirm these MailerLite form settings:
+When enabled, the custom waitlist will store subscribers in Cloudflare D1. It rejects repeat email addresses, verifies a Cloudflare Turnstile token on the server, rate-limits requests, and requires a one-time email confirmation before an address becomes confirmed.
 
-1. Keep reCAPTCHA enabled.
-2. Keep double opt-in enabled, so only people who confirm from their inbox become active subscribers.
-3. Deploy the site and submit a test email address. Confirm that it reaches the confirmation-email step and appears as an active subscriber only after confirmation.
-
-The list is stored in MailerLite under Subscribers. Export the relevant subscriber group from the Groups tab when you need a CSV.
+Use [PRE_LAUNCH_CHECKLIST.md](PRE_LAUNCH_CHECKLIST.md) to complete the Cloudflare dashboard configuration and switch the live form safely.
